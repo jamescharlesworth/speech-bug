@@ -5,7 +5,7 @@ const ffmpeg = require('fluent-ffmpeg');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-
+const client = new speech.SpeechClient();
 
 const config = {
   "audioChannelCount": 2,
@@ -37,7 +37,7 @@ fs.readFile(filepath, async (err, buffer) => {
 
   const opts = {timeout: 15, maxRetries: 5};
   try {
-    const client = new speech.SpeechClient();
+
     const response = await client.recognize(request, opts);
 
     console.log(response);
